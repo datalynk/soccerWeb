@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="pt-br" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>FutOnline</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Marque sua presen&Ccedil;a e veja se vai dar jogo!</h1>
+            </header>
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div class="descricao">
+                            Tem problemas em contatar seus amigos para jogar futebol?<br>
+                            Este site permite comunicar seus amigos sobre jogo e <br>
+                            guardar a resposta deles num único só lugar! <br>
+                            Todos conseguirão saber se vai haver jogo ou não!
+                    </div>
+                    
+                    <div id="wrapper">
+                         <div id="login" class="animate form">
+                            <form  action="mysuperscript.php" autocomplete="on"> 
+                                <h1>Log in</h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u" > Nome de usu&aacute;rio </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="meu_email@mail.com"/>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p"> Senha </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="senha" /> 
+                                </p>
+                                <p class="keeplogin"> 
+                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+                                    <label for="loginkeeping">Continuar conectado</label>
+				</p>
+                                <p class="login button"> 
+                                <input type="submit" value="Login" /> 
+                                <p class="change_link">
+                                        <a href="#toregister" class="to_register">Faça seu registro</a>
+                                </p>
+                            </form>
+                        </div>
+
+
+                        <div id="register" class="animate form">
+                            <form  action="mysuperscript.php" autocomplete="on"> 
+                                <h1> Sign up </h1> 
+                                <p> 
+                                    <label for="usernamesignup" class="uname" data-icon="u">Seu nome</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="meu_nome_de_usu&aacute;rio" />
+                                </p>
+                                <p> 
+                                    <label for="emailsignup" class="youmail" data-icon="e" >Seu email</label>
+                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="meu_email@mail.com"/> 
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">Sua senha</label>
+                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="senha"/>
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Confirme sua senha</label>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="senha"/>
+                                </p>
+                                <p class="signin button"> 
+									<input type="submit" value="Registrar"/> 
+								</p>
+                                <p class="change_link">  
+                                        J&aacute; est&aacute; registrado?
+                                        <a href="#tologin" class="to_register"> Fa&ccedil;a login! </a>
+                                </p>
+                            </form>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>
+        </div>
+    </body>
+</html>
