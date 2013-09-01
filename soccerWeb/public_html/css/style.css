@@ -35,11 +35,12 @@ a.hiddenanchor{
 }
 /** The wrapper that will contain our two forms **/
 #wrapper{
-	width: 60%;
-	min-height: 560px;		
-	width: 500px;
-        position:absolute;
-        right:100px;
+	min-width: 500px;
+	min-height: 560px;
+	min-width: 500px;
+        float: right;
+        position: relative;
+        padding-right: 70px;
         
 }
 /**** Styling the form elements **/
@@ -225,7 +226,7 @@ p.change_link{
 	color: rgb(127, 124, 124);
 	left: 0px;
 	height: 20px;
-	width: 440px;
+	width: 500px;
 	padding: 17px 30px 20px 30px;
 	font-size: 16px	;
 	text-align: right;
@@ -312,7 +313,7 @@ p.change_link{
 	opacity: 0;
 }
 #login{
-	z-index: 22;
+	 z-index: 22;
 }
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
@@ -381,4 +382,26 @@ p.change_link{
 	position: absolute;
 	height: 90px;
 	background: transparent;
+}
+
+
+.custom-li { 
+    list-style-position: outside; 
+    list-style-image: url(../images/soccer-ball.png); 
+}
+
+.custom-ul{
+    padding-left: 50px;
+}
+
+.slider-wesley{
+    width:800px;
+    height: 380px;
+    
+}
+
+.document-slider{
+    width:1000px;
+    height: 380px;
+    text-align: center;
 }

@@ -27,16 +27,10 @@
                     <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
                     <a class="hiddenanchor" id="toregister"></a>
                     <a class="hiddenanchor" id="tologin"></a>
-                    <div class="descricao">
-                            Tem problemas em contatar seus amigos para jogar futebol?<br>
-                            Este site permite comunicar seus amigos sobre jogo e <br>
-                            guardar a resposta deles num único só lugar! <br>
-                            Todos conseguirão saber se vai haver jogo ou não!
-                    </div>
                     
                     <div id="wrapper">
-                         <div id="login" class="animate form">
-                            <form  action="mysuperscript.php" autocomplete="on"> 
+                         <div id="login" class="animate">
+                            <form  action="login.php" method="POST" autocomplete="on"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Nome de usu&aacute;rio </label>
@@ -59,7 +53,7 @@
                         </div>
 
 
-                        <div id="register" class="animate form">
+                        <div id="register" class="animate">
                             <form  action="mysuperscript.php" autocomplete="on"> 
                                 <h1> Sign up </h1> 
                                 <p> 
@@ -86,10 +80,32 @@
                                         <a href="#tologin" class="to_register"> Fa&ccedil;a login! </a>
                                 </p>
                             </form>
-                        </div>
-						
+                        </div>			
                     </div>
+                    
+                     <div class="descricao">
+                         <span>Tem problemas em contatar seus amigos para jogar futebol?</span> <br/>
+                         Este site comunica seus amigos sobre jogo e guarda a resposta deles num só lugar! Todos conseguirão saber se vai haver jogo ou não!<br/>
+                       
+                         <br/>
+                         Aqui você pode:
+                        
+                         <ul class="custom-ul">
+                             <li class="custom-li">Criar jogo e escolher os amigos que vão jogar.</li>
+                             <li class="custom-li">Enviar sms ou email para comunicar os amigos do grande jogo.</li>
+                             <li class="custom-li">Ver estatísticas sobre quantos jogos cada um participou.</li>
+                         </ul>
+                         <br/>
+                         
+                         <div class="document-slider">
+                            <object type="text/html" class="slider-wesley" data="carousel.html"></object>
+                         </div>
+                         
+                    </div>
+ 
                 </div>  
+                
+                
             </section>
         </div>
     </body>
