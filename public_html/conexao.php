@@ -18,9 +18,9 @@ class ConnectionMYSQL{
      * Abre conecção com o SGBD mysql. Guarda a conecção na variável $_db_handle
      */
     function connect(){
-        $this->db_handle = mysql_connect($this->_serverIP, $this->_user_name, $this->_password);
-        
-        if (!$this->db_handle) {
+        $this->_db_handle = mysql_connect($this->_serverIP, $this->_user_name, $this->_password);
+
+        if (!$this->_db_handle) {
             die('Não foi possível conectar: ' . mysql_error());
         }
     }
@@ -31,7 +31,7 @@ class ConnectionMYSQL{
      */   
     function select_database($database){
         $this->_database = $database;
-        $db_found = mysql_select_db($database, $this->db_handle);    
+        $db_found = mysql_select_db($database, $this->_db_handle);    
         
         if (!$db_found) {
             die ('Não foi possível selecionar o banco ' . $database . ': ' . mysql_error());
@@ -50,6 +50,7 @@ class ConnectionMYSQL{
             $message .= 'Query: ' . $query;
             die($message);
         }
+        return $result;
     }
     
     function disconnect(){
@@ -82,9 +83,7 @@ class ConnectionMYSQL{
         $this->_database = $database;
     }
     
-
 }
-
 
 
 ?>
