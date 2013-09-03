@@ -12,10 +12,57 @@
         <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
         <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
         <meta name="author" content="Codrops" />
+        <script src="js/libs/jquery-1.9.0/jquery-1.10.2.min.js"></script>
+        <script src="js/libs/jquery-1.9.0/jquery-1.10.2.js"></script>
+        <script src="js/utils.js"></script>
         <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    
+    
+        <script>
+            $(function() {
+                $("#submit_login").click(function() {
+                    // getting the value that user typed
+                    var checkString    = $("#username").val();
+                    // forming the queryString
+                    var data           = 'user='+ checkString;
+
+                    // if checkString is not empty
+                    if(checkString) {
+                        // ajax call
+                        $.ajax({
+                            type: "POST",
+                            url: "check_email.php",
+                            data: data,
+                           
+                            success: function(html){ // this happen after we get result
+                                //alert("html: " + html);
+                                if(html == "email_is_registered"){
+                                        var params = new Array();
+                                        params["username"]=$("#username").val();
+                                        params["password"]=$("#password").val();
+                                        
+                                        post_to_url($("#form_do_authetication").attr("action"), params, $("#form_do_authetication").attr("method"));
+                                    } else {
+                                        $("#username").css("border-color","red");
+                                        $("#username").keyup(function(){ $("#username").css("border-color","");});
+                                    
+                                    }
+                                }
+                            });
+                        }
+                        return false;
+                    });
+                });
+                
+                
+            
+            
+        </script>
+    
+    
     </head>
     <body>
         <div class="container">
@@ -30,7 +77,7 @@
                     
                     <div id="wrapper">
                          <div id="login" class="animate">
-                            <form  action="login.php" method="POST" autocomplete="on"> 
+                            <form  id="form_do_authetication" action="login.php" method="POST" autocomplete="on"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Nome de usu&aacute;rio </label>
@@ -45,7 +92,7 @@
                                     <label for="loginkeeping">Continuar conectado</label>
 				</p>
                                 <p class="login button"> 
-                                <input type="submit" value="Login" /> 
+                                <input id="submit_login" type="submit" value="Login" /> 
                                 <p class="change_link">
                                         <a href="#toregister" class="to_register">Faça seu registro</a>
                                 </p>
@@ -87,7 +134,7 @@
                                 
                                 
                                 <p class="signin button"> 
-				<input type="submit" value="Registrar"/> 
+				<input id="submit_register" type="submit" value="Registrar"/> 
 				</p>
                                 <p class="change_link">  
                                         J&aacute; est&aacute; registrado?
