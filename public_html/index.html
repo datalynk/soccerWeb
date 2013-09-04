@@ -12,17 +12,19 @@
         <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
         <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
         <meta name="author" content="Codrops" />
-        <script src="js/libs/jquery-1.9.0/jquery-1.10.2.min.js"></script>
         <script src="js/libs/jquery-1.9.0/jquery-1.10.2.js"></script>
+        <script src="js/jquery.tipsy.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/tipsy.css" />
+
         <script src="js/utils.js"></script>
         <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-    
-    
+        
         <script>
             $(function() {
+  
                 $("#submit_login").click(function() {
                     // getting the value that user typed
                     var checkString    = $("#username").val();
@@ -38,7 +40,7 @@
                             data: data,
                            
                             success: function(html){ // this happen after we get result
-                                //alert("html: " + html);
+
                                 if(html == "email_is_registered"){
                                         var params = new Array();
                                         params["username"]=$("#username").val();
@@ -47,8 +49,14 @@
                                         post_to_url($("#form_do_authetication").attr("action"), params, $("#form_do_authetication").attr("method"));
                                     } else {
                                         $("#username").css("border-color","red");
-                                        $("#username").keyup(function(){ $("#username").css("border-color","");});
-                                    
+                                        $("#username").attr('title','Email incorreto!');
+                                        $('#username').tipsy({trigger: 'manual', gravity: 's', fade: true});
+                                        $('#username').tipsy('show');
+                                        
+                                        $("#username").keydown(function(){ 
+                                            $("#username").css("border-color","");
+                                            $('#username').tipsy('hide');
+                                        });
                                     }
                                 }
                             });
@@ -65,6 +73,7 @@
     
     </head>
     <body>
+        
         <div class="container">
             <header>
                 <h1>Marque sua presen&Ccedil;a e veja se vai dar jogo!</h1>
@@ -143,7 +152,7 @@
                             </form>
                         </div>			
                     </div>
-                    
+
                      <div class="descricao">
                          <span>Tem problemas em contatar seus amigos para jogar futebol?</span> <br/>
                          Este site comunica seus amigos sobre jogo e guarda a resposta deles num só lugar! Todos conseguirão saber se vai haver jogo ou não!<br/>
@@ -169,5 +178,6 @@
                 
             </section>
         </div>
+
     </body>
 </html>
