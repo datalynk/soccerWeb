@@ -103,7 +103,7 @@ a{
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
         padding: 0px 0px 5px 0px;
 }
-span{
+.texto-amarelo{
 	color: yellow;
 }
 .container > header h2{

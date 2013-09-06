@@ -46,5 +46,18 @@ function password_is_correct($email,$senha){
     return $result;
 }
 
+function getSenha($email){
+    $result = do_query("select senha from jogador where email= '". $email . "'"); 
+    $row = mysql_fetch_assoc($result);
+    
+    if($row!=null && sizeof($row)>0){
+        $result = $row['senha'];
+    }else{
+        $result = false;
+    }
+    
+    return $result;
+}
 
+//echo getSenha('wly.hid@gmail.com');
 ?>

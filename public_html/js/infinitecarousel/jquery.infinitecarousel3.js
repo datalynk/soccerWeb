@@ -22,7 +22,7 @@
 				thumbnailType: 'none', // buttons, images, numbers, count, or none
 				easeLeft: 'linear',
 				easeRight: 'linear',
-				imagePath: '/soccerWeb/js/infinitecarousel/images/',
+				imagePath: '/soccerWeb/public_html/js/infinitecarousel/images/',
 				inView: 1,
 				margin: 0,
 				advance: 1,
