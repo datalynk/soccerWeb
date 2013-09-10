@@ -36,6 +36,32 @@
                     var userData = 'user='+ userString;
                     // forming the queryString
                     var passData = 'user='+ userString + ";" + 'password='+ passString;
+  
+                    if(!userString) {
+                        $("#username").css("border-color", "red");
+                        $("#username").attr('title', 'Escreva seu email!');
+                        $('#username').tipsy({trigger: 'manual', gravity: 's', fade: true});
+                        $('#username').tipsy('show');
+
+                        $("#username").focus(function() {
+                            $("#username").css("border-color", "");
+                            $('#username').tipsy('hide');
+                        });
+                        return false;
+                    }
+        
+                    if(!passString){
+                        $("#password").css("border-color", "red");
+                        $("#password").attr('title', 'Escreva sua senha!');
+                        $('#password').tipsy({trigger: 'manual', gravity: 's', fade: true});
+                        $('#password').tipsy('show');
+
+                        $("#password").focus(function() {
+                            $("#password").css("border-color", "");
+                            $('#password').tipsy('hide');
+                        }); 
+                        return false;
+                    }
                     
 
                     // if checkString is not empty
@@ -47,63 +73,67 @@
                             data: userData,
                            
                             success: function(html){ // this happen after we get result
-
+                                    
                                     if(html == "email_is_registered"){
                                         var params = new Array();
                                         params["username"]=$("#username").val();
                                         params["password"]=$("#password").val();
                                         
-                                        //post_to_url($("#form_do_authetication").attr("action"), params, $("#form_do_authetication").attr("method"));
+                                        
+                                        //Aqui verifico se a senha é valida para aquele usuário
+                                        if(passString) {
+
+                                            // ajax call
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "check_password.php",
+                                                data: passData,
+
+                                                success: function(html){ // this happen after we get result
+                                                        
+                                                        if(html == "password_is_registered"){
+
+                                                            var params = new Array();
+                                                            params["username"]=$("#username").val();
+                                                            params["password"]=$("#password").val();
+
+                                                            post_to_url($("#form_do_authetication").attr("action"), params, $("#form_do_authetication").attr("method"));
+                                                        } else {
+                                                            $("#password").css("border-color", "red");
+                                                            $("#password").attr('title', 'Senha incorreta!');
+                                                            $('#password').tipsy({trigger: 'manual', gravity: 's', fade: true});
+                                                            $('#password').tipsy('show');
+
+                                                            $("#password").focus(function() {
+                                                                $("#password").css("border-color", "");
+                                                                $('#password').tipsy('hide');
+                                                            });
+
+                                                        }
+                                                }
+                                            });
+
+                                        }                                    
+                                        
+                                        
                                     } else {
                                         $("#username").css("border-color", "red");
                                         $("#username").attr('title', 'Email incorreto!');
                                         $('#username').tipsy({trigger: 'manual', gravity: 's', fade: true});
                                         $('#username').tipsy('show');
 
-                                        $("#username").keydown(function() {
+                                        $("#username").focus(function() {
                                             $("#username").css("border-color", "");
                                             $('#username').tipsy('hide');
                                         });
                                     }
                             }
-                        });
+                        });   
                     }
                     
-                    
-                    //Aqui verifico se a senha é valida para aquele usuário
-                    if(passString) {
-
-                        // ajax call
-                        $.ajax({
-                            type: "POST",
-                            url: "check_password.php",
-                            data: passData,
-                           
-                            success: function(html){ // this happen after we get result
-
-                                    if(html == "password_is_registered"){
-                                        var params = new Array();
-                                        params["username"]=$("#username").val();
-                                        params["password"]=$("#password").val();
-                                        
-                                        post_to_url($("#form_do_authetication").attr("action"), params, $("#form_do_authetication").attr("method"));
-                                    } else {
-                                        $("#password").css("border-color", "red");
-                                        $("#password").attr('title', 'Senha incorreta!');
-                                        $('#password').tipsy({trigger: 'manual', gravity: 's', fade: true});
-                                        $('#password').tipsy('show');
-
-                                        $("#password").keydown(function() {
-                                            $("#password").css("border-color", "");
-                                            $('#password').tipsy('hide');
-                                        });
-                                    }
-                            }
-                        });
-                    }
-                    
-
+                   
                     return false;
+                    
                 });
             });
                 
@@ -145,7 +175,7 @@
                                 
                                 
                                 <p class="plogin"> 
-                                    <span id="recuperar-senha" class="recuperar-senha" onclick="recuperarSenha('recuperar_senha.php',$('#username').val());">Recuperar senha</span>
+                                    <span id="recuperar-senha" class="recuperar-senha" onmouseout="this.style.fontWeight='normal';" onmouseover="this.style.fontWeight='bold';"  onclick="recuperarSenha('recuperar_senha.php',$('#username').val());">Recuperar senha</span>
                                     <input id="submit_login" class="login button" type="submit" value="Login" />  
                                 </p>
                                     
